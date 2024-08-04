@@ -1,7 +1,7 @@
 resource "aws_instance" "instances" {
   ami                        = data.aws_ami.ami.id
   instance_type              = "t3.micro"
-  vpc_security_group_ids     = [aws_security_group.allow-all.id]
+  vpc_security_group_ids     = ["sg-06d14744e7a12dcaf"]
 
   tags = {
     Name = "frontend"
@@ -16,12 +16,3 @@ resource "aws_route53_record" "record" {
   records = [aws_instance.instances.private_ip]
 }
 
-resource "aws_security_group" "allow-all" {
-  name        = "sg"
-  description = "sg"
-  vpc_id      = "vpc-016b04b871ea2362c"
-
-  tags = {
-    Name = "sg"
-  }
-}
