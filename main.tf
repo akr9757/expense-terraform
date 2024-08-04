@@ -17,11 +17,11 @@ resource "aws_route53_record" "record" {
 }
 
 resource "aws_security_group" "allow-all" {
-  name        = "allow-all"
-  description = "Allow-all"
+  name        = "sg"
+  description = "sg"
   vpc_id      = "vpc-016b04b871ea2362c"
 
   tags = {
-    Name = "allow_tls"
+    Name = "sg"
   }
 }
