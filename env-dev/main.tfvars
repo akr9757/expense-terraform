@@ -1,6 +1,6 @@
 env="dev"
 
-components {
+components = {
   main = {
     frontend = {
       name = "frontend"
