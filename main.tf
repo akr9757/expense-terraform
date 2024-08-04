@@ -8,3 +8,10 @@ resource "aws_instance" "instances" {
   }
 }
 
+resource "aws_route53_record" "record" {
+  zone_id = "Z04275581JIKR4XEVM94K"
+  name    = "frontend-dev.akrdevops.online"
+  type    = "A"
+  ttl     = 30
+  records = [aws_instance.instances.private_ip]
+}
