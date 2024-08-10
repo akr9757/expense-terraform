@@ -1,7 +1,7 @@
 env="prod"
 
 components = {
-  default = {
+  main = {
     frontend = {
       name = "frontend"
       instance_type = "t3.micro"
@@ -16,22 +16,3 @@ components = {
     }
   }
 }
-
-
-
-# variable "components" {
-#   main = {
-#     frontend = {
-#       name = "frontend"
-#       instance_type = "t3.micro"
-#     }
-#     backend = {
-#       name = "backend"
-#       instance_type = "t3.micro"
-#     }
-#     mysql = {
-#       name = "mysql"
-#       instance_type = "t3.micro"
-#     }
-#   }
-# }
