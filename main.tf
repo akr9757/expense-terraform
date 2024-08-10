@@ -12,7 +12,7 @@ resource "aws_instance" "instances" {
 resource "aws_route53_record" "main" {
   for_each                = var.components
   zone_id                 = "Z04275581JIKR4XEVM94K"
-  name                    = lookup(each.value, "name", null)
+  name                    = "${lookup(each.value, "name", null)}-${var.env}"
   type                    = "A"
   ttl                     = 30
   records                 = [aws_instance.instances[each.key].private_ip]
