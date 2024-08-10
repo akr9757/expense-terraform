@@ -1,5 +1,5 @@
 resource "aws_instance" "instances" {
-  for_each = var.components
+  for_each                   = var.components
   ami                        = data.aws_ami.ami.id
   instance_type              = lookup(each.value, "instance_type", null)
   vpc_security_group_ids     = ["sg-06d14744e7a12dcaf"]
