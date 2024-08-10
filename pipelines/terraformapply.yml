@@ -1,0 +1,61 @@
+pipelines:
+  terraformapply:
+    group: defaultGroup
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git-fe20804:
+        git: https://github.com/akr9757/expense-ansible.git
+        shallow_clone: false
+        auto_update: true
+        branch: main
+    stages:
+      - DEV:
+          fetch_materials: true
+          jobs:
+            shell:
+              timeout: 0
+              tasks:
+                - exec:
+                    command: terraform
+                    arguments: ["init", "-backend-config=env-dev/state.tfvars",]
+                - exec:
+                    command: terraform
+                    arguments: [ "apply", "-var-file=env-dev/main.tfvars", "-auto-approve"]
+
+      - QA:
+          fetch_materials: true
+          approval:
+            type: manual
+          jobs:
+            shell:
+              timeout: 0
+              tasks:
+                - exec:
+                    command: ls
+                    run_if: passed
+
+      - UAT:
+          fetch_materials: true
+          approval:
+            type: manual
+          jobs:
+            shell:
+              timeout: 0
+              tasks:
+                - exec:
+                    command: ls
+                    run_if: passed
+
+      - PROD:
+          fetch_materials: true
+          approval:
+            type: manual
+          jobs:
+            shell:
+              timeout: 0
+              tasks:
+                - exec:
+                    command: ls
+                    run_if: passed
