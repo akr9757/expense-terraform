@@ -1,7 +1,7 @@
 resource "aws_instance" "instances" {
   for_each                = var.components
   ami                     = data.aws_ami.ami.image_id
-  instance_type           = each.value["instance_type"]
+  instance_type           = "t3.micro"
   vpc_security_group_ids  = ["sg-06d14744e7a12dcaf"]
 
   tags = {
