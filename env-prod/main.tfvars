@@ -6,17 +6,16 @@ components = {
       name = "frontend"
       instance_type = "t3.micro"
     }
-    frontend = {
-      name = "frontend"
+    backend = {
+      name = "backend"
       instance_type = "t3.micro"
     }
-    frontend = {
-      name = "frontend"
+    mysql = {
+      name = "mysql"
       instance_type = "t3.micro"
     }
   }
 }
-
 
 
 
