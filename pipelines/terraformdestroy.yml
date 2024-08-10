@@ -1,12 +1,12 @@
 pipelines:
-  terraformdestroy:
+  terraformapply:
     group: defaultGroup
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
     materials:
       git-fe20804:
-        git: https://github.com/akr9757/expense-ansible.git
+        git: https://github.com/akr9757/expense-terraform.git
         shallow_clone: false
         auto_update: true
         branch: main
@@ -25,7 +25,7 @@ pipelines:
 
                 - exec:
                     command: terraform
-                    arguments: [ "destroy", "-var-file=env-dev/main.tfvars", "-auto-approve"]
+                    arguments: [ "destroy", "-var-file=env-dev/main.tfvars", "-auto-approve" ]
 
       - QA:
           fetch_materials: true
