@@ -4,5 +4,6 @@ module "vpc" {
 
   cidr_block           = lookup(each.value, "cidr_block", null)
   env                  = var.env
-#   public.subnet_cidr = lookup(each.value, "public.subnet_cidr" null)
+  subnets_cidr         = lookup(each.value, "subnets_cidr" null)
+  az         = lookup(each.value, "az" null)
 }

@@ -1,6 +1,7 @@
 variable "cidr_block" {}
 variable "env" {}
-# variable "public.subnet_cidr" {}
+variable "subnets_cidr" {}
 variable "project_name" {
   default = "expense"
 }
+variable "az" {}
