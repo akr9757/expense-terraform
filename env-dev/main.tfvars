@@ -1,16 +1,7 @@
 env="dev"
 
-components = {
-  frontend = {
-    name = "frontend"
-    instance_type = "t3.micro"
-  }
-  backend = {
-    name = "backend"
-    instance_type = "t3.micro"
-  }
-  mysql = {
-    name = "mysql"
-    instance_type = "t3.micro"
+vpc = {
+  main = {
+    cidr_block = "10.20.0.0/21"
   }
 }

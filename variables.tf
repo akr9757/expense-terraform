@@ -1,3 +1,7 @@
 variable "env" {}
-variable "components" {}
+variable "vpc" {}
+variable "project_name" {
+
+}
+
 
