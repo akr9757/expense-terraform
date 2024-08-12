@@ -69,7 +69,7 @@ resource "aws_subnet" "public" {
   }
 }
 
-resource "aws_route_table" "main" {
+resource "aws_route_table" "public" {
   count      = length(var.public_subnets_cidr)
   vpc_id = aws_vpc.main.id
 
@@ -88,10 +88,10 @@ resource "aws_route_table" "main" {
   }
 }
 
-resource "aws_route_table_association" "main" {
+resource "aws_route_table_association" "public" {
   count      = length(var.public_subnets_cidr)
   subnet_id      =lookup(element(aws_subnet.public, count.index), "id", null)
-  route_table_id = lookup(element(aws_route_table.main, count.index), "id", null)
+  route_table_id = lookup(element(aws_route_table.public, count.index), "id", null)
 }
 
 
@@ -107,7 +107,7 @@ resource "aws_subnet" "web" {
   }
 }
 
-resource "aws_route_table" "main" {
+resource "aws_route_table" "web" {
   count      = length(var.web_subnets_cidr)
   vpc_id = aws_vpc.main.id
 
@@ -126,10 +126,10 @@ resource "aws_route_table" "main" {
   }
 }
 
-resource "aws_route_table_association" "main" {
+resource "aws_route_table_association" "web" {
   count      = length(var.web_subnets_cidr)
   subnet_id      =lookup(element(aws_subnet.web, count.index), "id", null)
-  route_table_id = lookup(element(aws_route_table.main, count.index), "id", null)
+  route_table_id = lookup(element(aws_route_table.web, count.index), "id", null)
 }
 
 
@@ -145,7 +145,7 @@ resource "aws_subnet" "app" {
   }
 }
 
-resource "aws_route_table" "main" {
+resource "aws_route_table" "app" {
   count      = length(var.app_subnets_cidr)
   vpc_id = aws_vpc.main.id
 
@@ -164,10 +164,10 @@ resource "aws_route_table" "main" {
   }
 }
 
-resource "aws_route_table_association" "main" {
+resource "aws_route_table_association" "app" {
   count      = length(var.app_subnets_cidr)
   subnet_id      =lookup(element(aws_subnet.app, count.index), "id", null)
-  route_table_id = lookup(element(aws_route_table.main, count.index), "id", null)
+  route_table_id = lookup(element(aws_route_table.app, count.index), "id", null)
 }
 
 
@@ -183,7 +183,7 @@ resource "aws_subnet" "db" {
   }
 }
 
-resource "aws_route_table" "main" {
+resource "aws_route_table" "db" {
   count      = length(var.db_subnets_cidr)
   vpc_id = aws_vpc.main.id
 
@@ -202,8 +202,10 @@ resource "aws_route_table" "main" {
   }
 }
 
-resource "aws_route_table_association" "main" {
+resource "aws_route_table_association" "db" {
   count      = length(var.db_subnets_cidr)
   subnet_id      =lookup(element(aws_subnet.db, count.index), "id", null)
-  route_table_id = lookup(element(aws_route_table.main, count.index), "id", null)
+  route_table_id = lookup(element(aws_route_table.db, count.index), "id", null)
 }
+
+
