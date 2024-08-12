@@ -198,7 +198,7 @@ resource "aws_route_table" "db" {
   }
 
   tags = {
-    Name = "public-rt-${count.index+1}"
+    Name = "db-rt-${count.index+1}"
   }
 }
 
