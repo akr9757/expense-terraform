@@ -47,7 +47,7 @@ resource "aws_autoscaling_group" "main" {
   max_size           = var.max_size
   min_size           = var.min_size
   vpc_zone_identifier = var.vpc_zone_identifier
-  target_group_arns = [aws_lb_target_group.main.arn]
+#   target_group_arns = [aws_lb_target_group.main.arn]
 
 
   launch_template {
@@ -62,9 +62,9 @@ resource "aws_autoscaling_group" "main" {
   }
 }
 
-resource "aws_lb_target_group" "main" {
-  name        = "${ local.name }-tg"
-  port        = var.port_no
-  protocol    = "HTTP"
-  vpc_id      = var.vpc_id
-}
+# resource "aws_lb_target_group" "main" {
+#   name        = "${ local.name }-tg"
+#   port        = var.port_no
+#   protocol    = "HTTP"
+#   vpc_id      = var.vpc_id
+# }

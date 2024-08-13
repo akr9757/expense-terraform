@@ -72,34 +72,34 @@ module "frontend" {
   vpc_zone_identifier = lookup(lookup(module.vpc, "main", null), "web_subnets_ids", null)
 }
 
-module "public-alb" {
-  source = "./modules/alb"
+# module "public-alb" {
+#   source = "./modules/alb"
+#
+#   alb_name       = "public"
+#   internal       = false
+#   sg_cidr_blocks = ["0.0.0.0/0"]
+#
+#   project_name   = var.project_name
+#   env            = var.env
+#   certificate_arn = var.acm_arn
+#
+#   subnets        = lookup(lookup(module.vpc, "main", null), "public_subnets_ids", null)
+#   vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+#   target_group_arn = module.frontend.target_group_arn
+# }
 
-  alb_name       = "public"
-  internal       = false
-  sg_cidr_blocks = ["0.0.0.0/0"]
-
-  project_name   = var.project_name
-  env            = var.env
-  certificate_arn = var.acm_arn
-
-  subnets        = lookup(lookup(module.vpc, "main", null), "public_subnets_ids", null)
-  vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-  target_group_arn = module.frontend.target_group_arn
-}
-
-module "private-alb" {
-  source = "./modules/alb"
-
-  alb_name       = "private"
-  internal       = true
-  sg_cidr_blocks = lookup(lookup(var.vpc, "main", null), "web_subnets_cidr", null)
-
-  certificate_arn = var.acm_arn
-  project_name   = var.project_name
-  env            = var.env
-
-  subnets        = lookup(lookup(module.vpc, "main", null), "app_subnets_ids", null)
-  vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-  target_group_arn = module.backend.target_group_arn
-}
+# module "private-alb" {
+#   source = "./modules/alb"
+#
+#   alb_name       = "private"
+#   internal       = true
+#   sg_cidr_blocks = lookup(lookup(var.vpc, "main", null), "web_subnets_cidr", null)
+#
+#   certificate_arn = var.acm_arn
+#   project_name   = var.project_name
+#   env            = var.env
+#
+#   subnets        = lookup(lookup(module.vpc, "main", null), "app_subnets_ids", null)
+#   vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+#   target_group_arn = module.backend.target_group_arn
+# }
