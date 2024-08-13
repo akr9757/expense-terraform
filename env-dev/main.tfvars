@@ -26,14 +26,14 @@ rds = {
 }
 
 app = {
-  frontend = {
-    name               = "frontend"
-    instance_type      = "t3.micro"
-    instance_capacity  = 1
-    max_size           = 1
-    min_size           = 1
-    port_no            = 80
-  }
+#   frontend = {
+#     name               = "frontend"
+#     instance_type      = "t3.micro"
+#     instance_capacity  = 1
+#     max_size           = 1
+#     min_size           = 1
+#     port_no            = 80
+#   }
   backend = {
     name               = "backend"
     instance_type      = "t3.micro"
