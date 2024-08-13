@@ -2,14 +2,14 @@ resource "aws_launch_template" "main" {
   name_prefix   = "${local.name}-alt"
   image_id      = data.aws_ami.ami.id
   instance_type = var.instance_type
-  vpc_security_group_ids = [aws_security_group.new.id]
+  vpc_security_group_ids = [aws_security_group.main.id]
 
   tags = {
     Name = "${local.name}-alt"
   }
 }
 
-resource "aws_security_group" "new" {
+resource "aws_security_group" "main" {
   name        = "${ local.name }-sg"
   description = "${ local.name }-sg"
   vpc_id      = var.vpc_id
@@ -47,6 +47,7 @@ resource "aws_autoscaling_group" "main" {
   max_size           = var.max_size
   min_size           = var.min_size
   vpc_zone_identifier = var.vpc_zone_identifier
+  target_group_arns = [aws_lb_target_group.main.arn]
 
 
   launch_template {
@@ -59,4 +60,11 @@ resource "aws_autoscaling_group" "main" {
     propagate_at_launch = true
     value               = local.name
   }
+}
+
+resource "aws_lb_target_group" "main" {
+  name        = "${ local.name }-tg"
+  port        = var.port_no
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
 }
