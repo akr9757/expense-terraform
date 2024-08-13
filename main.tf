@@ -31,3 +31,20 @@ module "rds" {
   vpc_id            = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
   sg_cidr_blocks    = lookup(lookup(var.vpc, "main", null), "app_subnets_cidr", null)
 }
+
+module "backend" {
+  source = "./modules/app"
+
+
+  bastion_cidr        = var.bastion_cidr
+  env                 = var.env
+  instance_capacity   = lookup(lookup(var.app, "backend", null), "instance_capacity", null)
+  instance_type       = lookup(lookup(var.app, "backend", null), "instance_type", null)
+  max_size            = lookup(lookup(var.app, "backend", null), "max_size", null)
+  min_size            = lookup(lookup(var.app, "backend", null), "min_size", null)
+  port_no             = lookup(lookup(var.app, "backend", null), "instance_capacity", null)
+  project_name        = var.project_name
+  sg_cidr_blocks      = lookup(lookup(var.vpc, "main", null), "web_subnets_cidr", null)
+  vpc_id              = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+  vpc_zone_identifier = lookup(lookup(module.vpc, "main", null), "app_subnets_ids", null)
+}
