@@ -48,3 +48,20 @@ module "backend" {
   vpc_id              = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
   vpc_zone_identifier = lookup(lookup(module.vpc, "main", null), "app_subnets_ids", null)
 }
+
+module "frontend" {
+  source = "./modules/app"
+
+  for_each            = var.app
+  bastion_cidrs        = var.bastion_cidrs
+  env                 = var.env
+  instance_capacity   = lookup(lookup(var.app, "frontend", null), "instance_capacity", null)
+  instance_type       = lookup(lookup(var.app, "frontend", null), "instance_type", null)
+  max_size            = lookup(lookup(var.app, "frontend", null), "max_size", null)
+  min_size            = lookup(lookup(var.app, "frontend", null), "min_size", null)
+  port_no             = lookup(lookup(var.app, "frontend", null), "instance_capacity", null)
+  project_name        = var.project_name
+  sg_cidr_blocks      = lookup(lookup(var.vpc, "main", null), "web_subnets_cidr", null)
+  vpc_id              = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+  vpc_zone_identifier = lookup(lookup(module.vpc, "main", null), "web_subnets_ids", null)
+}
