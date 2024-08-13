@@ -37,7 +37,7 @@ resource "aws_security_group" "main" {
   }
 
   tags = {
-    Name = "${ local.name }-stg"
+    Name = "${ local.name }-security"
   }
 }
 
