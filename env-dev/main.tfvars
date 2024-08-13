@@ -1,7 +1,7 @@
 env="dev"
 kms_key_id = "arn:aws:kms:us-east-1:975050250738:key/581c3619-7ba5-4a58-833d-0a657d809e15"
 project_name = "expense"
-bastion_cidrs = "172.31.44.215/32"
+bastion_cidrs = ["172.31.44.215/32"]
 
 vpc = {
   main = {
