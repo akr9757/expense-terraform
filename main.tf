@@ -67,3 +67,31 @@ module "frontend" {
   vpc_id              = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
   vpc_zone_identifier = lookup(lookup(module.vpc, "main", null), "web_subnets_ids", null)
 }
+
+module "public-alb" {
+  source = "./modules/alb"
+
+  alb_name       = "public"
+  internal       = false
+  sg_cidr_blocks = ["0.0.0.0/0"]
+
+  project_name   = var.project_name
+  env            = var.env
+
+  subnets        = lookup(lookup(module.vpc, "main", null), "public_subnets_ids", null)
+  vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+}
+
+module "private-alb" {
+  source = "./modules/alb"
+
+  alb_name       = "private"
+  internal       = true
+  sg_cidr_blocks = lookup(lookup(var.vpc, "main", null), "web_subnets_cidr", null)
+
+  project_name   = var.project_name
+  env            = var.env
+
+  subnets        = lookup(lookup(module.vpc, "main", null), "app_subnets_ids", null)
+  vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+}
