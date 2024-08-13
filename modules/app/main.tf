@@ -11,6 +11,7 @@ resource "aws_launch_template" "main" {
 
 resource "aws_security_group" "new" {
   name        = "${ local.name }-sg"
+  description = "${ local.name }-sg"
   vpc_id      = var.vpc_id
 
   ingress {
