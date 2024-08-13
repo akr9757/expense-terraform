@@ -35,7 +35,7 @@ module "rds" {
 module "backend" {
   source = "./modules/app"
 
-
+  for_each            = var.app
   bastion_cidr        = var.bastion_cidr
   env                 = var.env
   instance_capacity   = lookup(lookup(var.app, "backend", null), "instance_capacity", null)
