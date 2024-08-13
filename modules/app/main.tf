@@ -2,15 +2,15 @@ resource "aws_launch_template" "main" {
   name_prefix   = "${local.name}-alt"
   image_id      = data.aws_ami.ami.id
   instance_type = var.instance_type
-  vpc_security_group_ids = [aws_security_group.main.id]
+  vpc_security_group_ids = [aws_security_group.new.id]
 
   tags = {
     Name = "${local.name}-alt"
   }
 }
 
-resource "aws_security_group" "main" {
-  name        = "${ local.name }-security"
+resource "aws_security_group" "new" {
+  name        = "${ local.name }-sg"
   vpc_id      = var.vpc_id
 
   ingress {
@@ -37,7 +37,7 @@ resource "aws_security_group" "main" {
   }
 
   tags = {
-    Name = "${ local.name }-security"
+    Name = "${ local.name }-sg"
   }
 }
 
