@@ -36,7 +36,7 @@ module "backend" {
   source = "./modules/app"
 
   for_each            = var.app
-  bastion_cidr        = var.bastion_cidr
+  bastion_cidrs        = var.bastion_cidrs
   env                 = var.env
   instance_capacity   = lookup(lookup(var.app, "backend", null), "instance_capacity", null)
   instance_type       = lookup(lookup(var.app, "backend", null), "instance_type", null)
