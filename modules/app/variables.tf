@@ -11,3 +11,4 @@ variable "vpc_zone_identifier" {}
 
 variable "env" {}
 variable "project_name" {}
+variable "name" {}
