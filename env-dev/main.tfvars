@@ -1,5 +1,6 @@
 env="dev"
 kms_key_id = "arn:aws:kms:us-east-1:975050250738:key/581c3619-7ba5-4a58-833d-0a657d809e15"
+project_name = "expense"
 
 vpc = {
   main = {
@@ -12,13 +13,13 @@ vpc = {
   }
 }
 
-# rds = {
-#   main = {
-#     allocated_storage    = 10
-#     db_name              = "expense"
-#     engine               = "mysql"
-#     engine_version       = "5.7"
-#     instance_class       = "db.t3.micro"
-#     family               = "mysql5.7"
-#   }
-# }
+rds = {
+  main = {
+    allocated_storage    = 10
+    db_name              = "expense"
+    engine               = "mysql"
+    engine_version       = "5.7"
+    instance_class       = "db.t3.micro"
+    family               = "mysql5.7"
+  }
+}

@@ -1,6 +1,6 @@
 variable "env" {}
-variable "vpc" {}
-variable "project_name" {
-  default = "expense"
-}
+variable "kms_key_id" {}
+variable "project_name" {}
 
+variable "rds" {}
+variable "vpc" {}
