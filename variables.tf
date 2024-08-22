@@ -6,4 +6,4 @@ variable "acm_arn" {}
 
 variable "rds" {}
 variable "vpc" {}
-# variable "app" {}
+variable "app" {}

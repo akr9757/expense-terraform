@@ -8,8 +8,8 @@ resource "aws_db_subnet_group" "main" {
 }
 
 resource "aws_security_group" "main" {
-  name        = "${ local.name }-stg"
-  description = "${ local.name }-stg"
+  name        = "${ local.name }-rds-stg"
+  description = "${ local.name }-rds-stg"
   vpc_id      = var.vpc_id
 
   ingress {
@@ -27,7 +27,7 @@ resource "aws_security_group" "main" {
   }
 
   tags = {
-    Name = "${ local.name }-stg"
+    Name = "${ local.name }-rds-stg"
   }
 }
 

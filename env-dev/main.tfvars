@@ -26,21 +26,21 @@ rds = {
   }
 }
 
-# app = {
-#   frontend = {
-#     component          = "frontend"
-#     instance_type      = "t3.micro"
-#     instance_capacity  = 1
-#     max_size           = 1
-#     min_size           = 1
-#     port_no            = 80
-#   }
-#   backend = {
-#     component          = "backend"
-#     instance_type      = "t3.micro"
-#     instance_capacity  = 1
-#     max_size           = 1
-#     min_size           = 1
-#     port_no            = 8080
-#   }
-# }
+app = {
+  frontend = {
+    component          = "frontend"
+    instance_type      = "t3.micro"
+    instance_capacity  = 1
+    max_size           = 1
+    min_size           = 1
+    port_no            = 80
+  }
+  backend = {
+    component          = "backend"
+    instance_type      = "t3.micro"
+    instance_capacity  = 1
+    max_size           = 1
+    min_size           = 1
+    port_no            = 8080
+  }
+}

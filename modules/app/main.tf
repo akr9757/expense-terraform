@@ -10,8 +10,8 @@ resource "aws_launch_template" "main" {
 }
 
 resource "aws_security_group" "main" {
-  name        = "${ local.name }-sg"
-  description = "${ local.name }-sg"
+  name        = "${ local.name }-${var.component}-stg"
+  description = "${ local.name }-${var.component}-stg"
   vpc_id      = var.vpc_id
 
   ingress {
@@ -38,7 +38,7 @@ resource "aws_security_group" "main" {
   }
 
   tags = {
-    Name = "${ local.name }-sg"
+    Name = "${ local.name }-${var.component}-stg"
   }
 }
 
