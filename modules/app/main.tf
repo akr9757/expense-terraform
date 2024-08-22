@@ -62,9 +62,9 @@ resource "aws_autoscaling_group" "main" {
   }
 }
 
-resource "aws_lb_target_group" "main" {
-  name        = "${ local.name }-tg"
-  port        = var.port_no
-  protocol    = "HTTP"
-  vpc_id      = var.vpc_id
-}
+# resource "aws_lb_target_group" "main" {
+#   name        = "${ local.name }-tg"
+#   port        = var.port_no
+#   protocol    = "HTTP"
+#   vpc_id      = var.vpc_id
+# }
