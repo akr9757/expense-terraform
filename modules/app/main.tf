@@ -185,7 +185,7 @@ resource "aws_iam_role" "main" {
       "Version": "2012-10-17",
       "Statement": [
         {
-          "Sid": "VisualEditor0",
+          "Sid": "GetParameter",
           "Effect": "Allow",
           "Action": [
             "ssm:GetParameterHistory",
@@ -196,7 +196,7 @@ resource "aws_iam_role" "main" {
           "Resource": "arn:aws:ssm:us-east-1:975050250738:parameter/${var.env}.${var.project_name}.${var.component}.*"
         },
         {
-          "Sid": "VisualEditor1",
+          "Sid": "DescribeAllParameters",
           "Effect": "Allow",
           "Action": "ssm:DescribeParameters",
           "Resource": "*"
