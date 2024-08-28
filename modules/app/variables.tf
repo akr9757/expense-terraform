@@ -1,7 +1,5 @@
 variable "instance_type" {}
 variable "instance_capacity" {}
-variable "max_size" {}
-variable "min_size" {}
 variable "bastion_cidrs" {}
 variable "vpc_id" {}
 variable "port_no" {}
