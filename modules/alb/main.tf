@@ -58,7 +58,7 @@ resource "aws_lb_listener" "main" {
   }
 }
 
-resource "aws_lb_listener" "front_end" {
+resource "aws_lb_listener" "main" {
   load_balancer_arn = aws_lb.main.arn
   port              = "80"
   protocol          = "HTTP"
@@ -72,6 +72,14 @@ resource "aws_lb_listener" "front_end" {
       status_code = "HTTP_301"
     }
   }
+}
+
+resource "aws_route53_record" "www" {
+  zone_id = var.zone_id
+  name    = "${var.dns_name}-${var.env}"
+  type    = "CNAME"
+  ttl     = 30
+  records = [aws_lb.main.dns_name]
 }
 
 

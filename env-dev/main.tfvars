@@ -3,6 +3,7 @@ kms_key_id = "arn:aws:kms:us-east-1:975050250738:key/581c3619-7ba5-4a58-833d-0a6
 project_name = "expense"
 bastion_cidrs = ["172.31.44.215/32"]
 acm_arn = "arn:aws:acm:us-east-1:975050250738:certificate/f97bfe82-675b-4b88-8d19-5154caff5840"
+zone_id = "Z04275581JIKR4XEVM94K"
 
 vpc = {
   main = {

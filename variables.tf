@@ -3,6 +3,7 @@ variable "kms_key_id" {}
 variable "project_name" {}
 variable "bastion_cidrs" {}
 variable "acm_arn" {}
+variable "zone_id" {}
 
 variable "rds" {}
 variable "vpc" {}
