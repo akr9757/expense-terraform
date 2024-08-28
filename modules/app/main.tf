@@ -188,7 +188,7 @@ resource "aws_iam_role" "main" {
           "Sid": "VisualEditor0",
           "Effect": "Allow",
           "Action": [
-            "kms: Decrypt",
+            "kms:Decrypt",
             "ssm:GetParameterHistory",
             "ssm:GetParametersByPath",
             "ssm:GetParameters",
