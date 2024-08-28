@@ -117,6 +117,15 @@ resource "aws_launch_template" "main" {
   image_id               = data.aws_ami.ami.id
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.main.id]
+
+  user_data = base64encode(templatefile("${path.module}/userdata.sh", {
+    service_name = var.component
+    env          = var.env
+  }))
+
+  iam_instance_profile {
+    name = aws_iam_instance_profile.main.name
+  }
 }
 
 resource "aws_autoscaling_group" "main" {
@@ -139,3 +148,58 @@ resource "aws_autoscaling_group" "main" {
   }
 }
 
+
+resource "aws_iam_role" "main" {
+  name               = "${local.name}-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+
+  inline_policy {
+    name = "parameter-store"
+
+    policy = jsonencode({
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Sid": "VisualEditor0",
+          "Effect": "Allow",
+          "Action": [
+            "kms: Decrypt",
+            "ssm:GetParameterHistory",
+            "ssm:GetParametersByPath",
+            "ssm:GetParameters",
+            "ssm:GetParameter"
+          ],
+          "Resource": concat([
+            "arn:aws:kms:us-east-1:975050250738:key/c782b178-7aff-474b-a600-e7d486d93174",
+            "arn:aws:ssm:us-east-1:975050250738:parameter/${var.env}-${var.project_name}-${var.component}.*",
+          ], var.parameters)
+        },
+        {
+          "Sid": "VisualEditor1",
+          "Effect": "Allow",
+          "Action": "ssm:DescribeParameters",
+          "Resource": "*"
+        }
+      ]
+    })
+  }
+}
+
+
+resource "aws_iam_instance_profile" "main" {
+  name = "${local.name}-profile"
+  role = aws_iam_role.main.name
+}
