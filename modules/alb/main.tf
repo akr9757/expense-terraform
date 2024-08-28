@@ -58,7 +58,7 @@ resource "aws_lb_listener" "main" {
   }
 }
 
-resource "aws_lb_listener" "main" {
+resource "aws_lb_listener" "redirect" {
   load_balancer_arn = aws_lb.main.arn
   port              = "80"
   protocol          = "HTTP"
@@ -74,7 +74,7 @@ resource "aws_lb_listener" "main" {
   }
 }
 
-resource "aws_route53_record" "www" {
+resource "aws_route53_record" "record" {
   zone_id = var.zone_id
   name    = "${var.dns_name}-${var.env}"
   type    = "CNAME"
