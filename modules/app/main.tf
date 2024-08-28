@@ -160,6 +160,10 @@ resource "aws_autoscaling_group" "main" {
   }
 }
 
+resource "aws_iam_instance_profile" "main" {
+  name = "${local.name}-profile"
+  role = aws_iam_role.main.name
+}
 
 resource "aws_iam_role" "main" {
   name               = "${local.name}-role"
@@ -185,7 +189,7 @@ resource "aws_iam_role" "main" {
       "Version": "2012-10-17",
       "Statement": [
         {
-          "Sid": "VisualEditor0",
+          "Sid": "GetPrameters",
           "Effect": "Allow",
           "Action": [
             "kms:Decrypt",
@@ -200,7 +204,7 @@ resource "aws_iam_role" "main" {
           ], var.parameters)
         },
         {
-          "Sid": "VisualEditor1",
+          "Sid": "DescribeAllPrameters",
           "Effect": "Allow",
           "Action": "ssm:DescribeParameters",
           "Resource": "*"
@@ -211,7 +215,4 @@ resource "aws_iam_role" "main" {
 }
 
 
-resource "aws_iam_instance_profile" "main" {
-  name = "${local.name}-profile"
-  role = aws_iam_role.main.name
-}
+
