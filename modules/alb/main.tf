@@ -58,7 +58,7 @@ resource "aws_lb_listener" "main" {
   }
 }
 
-resource "aws_lb_listener" "redirect" {
+resource "aws_lb_listener" "www" {
   load_balancer_arn = aws_lb.main.arn
   port              = "80"
   protocol          = "HTTP"
