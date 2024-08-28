@@ -62,14 +62,14 @@
 #   }
 # }
 
-# resource "aws_lb_target_group" "main" {
-#   name        = "${ local.name }-tg"
-#   port        = var.port_no
-#   protocol    = "HTTP"
-#   vpc_id      = var.vpc_id
-# }
+resource "aws_lb_target_group" "main" {
+  name        = "${ local.name }-tg"
+  port        = var.port_no
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+}
 
-#
+
 resource "aws_security_group" "main" {
   name        = "${local.name}-sg"
   description = "${local.name}-rds-sg"
