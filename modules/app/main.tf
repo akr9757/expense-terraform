@@ -185,18 +185,22 @@ resource "aws_iam_role" "main" {
       "Version": "2012-10-17",
       "Statement": [
         {
-          "Sid": "GetParameter",
+          "Sid": "VisualEditor0",
           "Effect": "Allow",
           "Action": [
+            "kms:Decrypt",
             "ssm:GetParameterHistory",
             "ssm:GetParametersByPath",
             "ssm:GetParameters",
             "ssm:GetParameter"
           ],
-          "Resource": "arn:aws:ssm:us-east-1:975050250738:parameter/${var.env}.${var.project_name}.${var.component}.*"
+          "Resource": concat([
+            "arn:aws:kms:us-east-1:975050250738:key/c782b178-7aff-474b-a600-e7d486d93174",
+            "arn:aws:ssm:us-east-1:975050250738:parameter/${var.env}.${var.project_name}.${var.component}.*"
+          ], var.parameters)
         },
         {
-          "Sid": "DescribeAllParameters",
+          "Sid": "VisualEditor1",
           "Effect": "Allow",
           "Action": "ssm:DescribeParameters",
           "Resource": "*"
