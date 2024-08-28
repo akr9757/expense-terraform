@@ -196,7 +196,7 @@ resource "aws_iam_role" "main" {
           ],
           "Resource": concat([
             "arn:aws:kms:us-east-1:975050250738:key/c782b178-7aff-474b-a600-e7d486d93174",
-            "arn:aws:ssm:us-east-1:975050250738:parameter/${var.env}.${var.project_name}.${var.component}.*",
+            "arn:aws:ssm:us-east-1:975050250738:parameter/${var.env}.${var.project_name}.${var.component}.*"
           ], var.parameters)
         },
         {
