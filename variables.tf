@@ -6,7 +6,7 @@ variable "acm_arn" {}
 
 variable "rds" {}
 variable "vpc" {}
-variable "app" {}
+# variable "app" {}
 
 variable "backend_port_no" {}
 variable "backend_instance_capacity" {}
