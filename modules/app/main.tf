@@ -73,6 +73,7 @@ resource "aws_lb_target_group" "main" {
     healthy_threshold = 2
     unhealthy_threshold = 2
     interval = 5
+    timeout = 2
   }
 }
 
