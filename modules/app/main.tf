@@ -96,7 +96,7 @@ resource "aws_security_group" "main" {
     to_port     = 9090
     protocol    = "tcp"
     cidr_blocks = var.prometheus_cidrs
-    description = "SSH"
+    description = "PROMETHEUS"
   }
 
   ingress {
