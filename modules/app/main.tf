@@ -168,7 +168,7 @@ resource "aws_autoscaling_group" "main" {
   }
   tag {
     key                 = "Monitor"
-    value               = yes
+    value               = true
     propagate_at_launch = true
   }
 }
