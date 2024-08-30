@@ -4,6 +4,7 @@ variable "project_name" {}
 variable "bastion_cidrs" {}
 variable "acm_arn" {}
 variable "zone_id" {}
+variable "prometheus_cidrs" {}
 
 variable "rds" {}
 variable "vpc" {}

@@ -7,6 +7,7 @@ variable "sg_cidr_blocks" {}
 variable "vpc_zone_identifier" {}
 variable "parameters" {}
 variable "kms" {}
+variable "prometheus_cidrs" {}
 
 
 variable "env" {}

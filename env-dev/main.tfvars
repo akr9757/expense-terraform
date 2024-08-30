@@ -4,6 +4,7 @@ project_name = "expense"
 bastion_cidrs = ["172.31.44.215/32"]
 acm_arn = "arn:aws:acm:us-east-1:975050250738:certificate/f97bfe82-675b-4b88-8d19-5154caff5840"
 zone_id = "Z04275581JIKR4XEVM94K"
+prometheus_cidrs = ["54.208.158.78/32"]
 
 vpc = {
   main = {
