@@ -50,8 +50,8 @@ rds = {
 
 backend_port_no = 8080
 backend_instance_capacity = 1
-backend_instance_type = "t3.micro"
+backend_instance_type = "t3.medium"
 
 frontend_port_no = 80
 frontend_instance_capacity = 1
-frontend_instance_type = "t3.micro"
+frontend_instance_type = "t3.medium"
