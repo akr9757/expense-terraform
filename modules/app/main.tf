@@ -212,8 +212,8 @@ resource "aws_iam_role" "main" {
             "ssm:GetParameter"
           ],
           "Resource": concat([
-            "arn:aws:kms:us-east-1:975050250738:key/c782b178-7aff-474b-a600-e7d486d93174",
-            "arn:aws:ssm:us-east-1:975050250738:parameter/${var.env}.${var.project_name}.${var.component}.*"
+            "arn:aws:kms:us-east-1:390844751090:key/df8fde32-64dd-43f1-a899-8d27a77e18a1",
+            "arn:aws:kms:us-east-1:390844751090:parameter/${var.env}.${var.project_name}.${var.component}.*"
           ], var.parameters)
         },
         {
