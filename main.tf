@@ -4,7 +4,7 @@ module "vpc" {
   for_each                       = var.vpc
   vpc_cidr_block                 = lookup(each.value, "vpc_cidr_block", null)
   public_subnets_cidr            = lookup(each.value, "public_subnets_cidr", null)
-  web_subnets_cidr               = lookup(eah.value, "web_subnets_cidr", null)
+  web_subnets_cidr               = lookup(each.value, "web_subnets_cidr", null)
   app_subnets_cidr               = lookup(each.value, "app_subnets_cidr", null)
   db_subnets_cidr                = lookup(each.value, "db_subnets_cidr", null)
   env                            = var.env
