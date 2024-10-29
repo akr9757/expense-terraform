@@ -1,7 +1,7 @@
 env="dev"
 kms_key_id = "arn:aws:kms:us-east-1:390844751090:key/df8fde32-64dd-43f1-a899-8d27a77e18a1"
 project_name = "expense"
-bastion_cidrs = ["172.31.37.95/32"]
+bastion_cidrs = ["172.31.35.166/32"]
 acm_arn = "arn:aws:acm:us-east-1:390844751090:certificate/d2f79188-e254-40cb-b1d6-017948373f46"
 zone_id = "Z03858273FGU51VSWPG4T"
 prometheus_cidrs = ["172.31.21.254/32"]
